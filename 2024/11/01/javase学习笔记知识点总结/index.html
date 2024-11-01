@@ -1,0 +1,427 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>javase学习笔记知识点总结 | lili的个人博客</title><meta name="author" content="lili"><meta name="copyright" content="lili"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="《JavaSE 学习笔记之知识点总结》 JavaSE（Java Standard Edition）作为 Java 编程的基础，涵盖了众多重要的知识点。以下是对我在学习 JavaSE 过程中重点知识点的总结。 一、基础语法 （一）数据类型  基本数据类型：包括整数类型（ byte 、 short 、 int 、 long ）、浮点类型（ float 、 double ）、字符类型（ char ）和布">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javase学习笔记知识点总结">
+<meta property="og:url" content="http://example.com/2024/11/01/javase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="lili的个人博客">
+<meta property="og:description" content="《JavaSE 学习笔记之知识点总结》 JavaSE（Java Standard Edition）作为 Java 编程的基础，涵盖了众多重要的知识点。以下是对我在学习 JavaSE 过程中重点知识点的总结。 一、基础语法 （一）数据类型  基本数据类型：包括整数类型（ byte 、 short 、 int 、 long ）、浮点类型（ float 、 double ）、字符类型（ char ）和布">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/butterfly-icon.png">
+<meta property="article:published_time" content="2024-11-01T09:20:36.000Z">
+<meta property="article:modified_time" content="2024-11-01T01:21:39.795Z">
+<meta property="article:author" content="lili">
+<meta property="article:tag" content="javase">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/11/01/javase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'javase学习笔记知识点总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-11-01 01:21:39'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">lili的个人博客</span></a><a class="nav-page-title" href="/"><span class="site-name">javase学习笔记知识点总结</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">javase学习笔记知识点总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-01T09:20:36.000Z" title="发表于 2024-11-01 09:20:36">2024-11-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-01T01:21:39.795Z" title="更新于 2024-11-01 01:21:39">2024-11-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>《JavaSE 学习笔记之知识点总结》</p>
+<p>JavaSE（Java Standard Edition）作为 Java 编程的基础，涵盖了众多重要的知识点。以下是对我在学习 JavaSE 过程中重点知识点的总结。</p>
+<p>一、基础语法</p>
+<p>（一）数据类型</p>
+<ol>
+<li>基本数据类型：包括整数类型（ byte 、 short 、 int 、 long ）、浮点类型（ float 、 double ）、字符类型（ char ）和布尔类型（ boolean ）。</li>
+</ol>
+<ul>
+<li>了解不同数据类型的取值范围和内存占用。</li>
+<li>掌握数据类型的自动转换和强制转换规则。</li>
+</ul>
+<ol start="2">
+<li>引用数据类型：如类、接口、数组等。</li>
+</ol>
+<ul>
+<li>理解引用数据类型与基本数据类型的区别。</li>
+<li>学会如何创建和使用引用数据类型的对象。</li>
+</ul>
+<p>（二）变量与常量</p>
+<ol>
+<li>变量：用于存储数据的容器。</li>
+</ol>
+<ul>
+<li>掌握变量的声明、初始化和赋值。</li>
+<li>了解变量的作用域和生命周期。</li>
+</ul>
+<ol start="2">
+<li>常量：一旦初始化后其值不能被改变的变量。</li>
+</ol>
+<ul>
+<li>使用  final  关键字定义常量。</li>
+<li>理解常量的命名规范和使用场景。</li>
+</ul>
+<p>（三）运算符</p>
+<ol>
+<li>算术运算符：如  + 、 - 、 * 、 &#x2F; 、 %  等。</li>
+</ol>
+<ul>
+<li>掌握基本的算术运算。</li>
+<li>了解运算符的优先级和结合性。</li>
+</ul>
+<ol start="2">
+<li>关系运算符：如  &#x3D;&#x3D; 、 !&#x3D; 、 &lt; 、 &gt; 、 &lt;&#x3D; 、 &gt;&#x3D;  等。</li>
+</ol>
+<ul>
+<li>用于比较两个值的大小关系。</li>
+<li>返回布尔值。</li>
+</ul>
+<ol start="3">
+<li>逻辑运算符：如  &amp;&amp; 、 || 、 !  等。</li>
+</ol>
+<ul>
+<li>用于组合多个条件判断。</li>
+<li>掌握逻辑运算符的短路特性。</li>
+</ul>
+<ol start="4">
+<li>赋值运算符：如  &#x3D; 、 +&#x3D; 、 -&#x3D; 、 *&#x3D; 、 &#x2F;&#x3D;  等。</li>
+</ol>
+<ul>
+<li>用于给变量赋值。</li>
+<li>了解复合赋值运算符的作用。</li>
+</ul>
+<p>（四）控制结构</p>
+<ol>
+<li>条件语句：</li>
+</ol>
+<ul>
+<li>if-else ：根据条件执行不同的代码块。</li>
+<li>switch-case ：根据变量的值选择执行不同的代码块。</li>
+</ul>
+<ol start="2">
+<li>循环语句：</li>
+</ol>
+<ul>
+<li>for ：用于循环执行特定次数的代码块。</li>
+<li>while ：当条件为真时循环执行代码块。</li>
+<li>do-while ：先执行一次代码块，然后在条件为真时继续循环。</li>
+</ul>
+<ol start="3">
+<li>跳转语句：</li>
+</ol>
+<ul>
+<li>break ：用于跳出循环或 switch 语句。</li>
+<li>continue ：用于跳过当前循环的剩余部分，直接进入下一次循环。</li>
+</ul>
+<p>二、面向对象编程</p>
+<p>（一）类与对象</p>
+<ol>
+<li>类的定义：包含属性和方法的模板。</li>
+</ol>
+<ul>
+<li>掌握类的声明、属性和方法的定义。</li>
+<li>理解类的封装性。</li>
+</ul>
+<ol start="2">
+<li>对象的创建：通过类的构造函数创建对象。</li>
+</ol>
+<ul>
+<li>学会使用  new  关键字创建对象。</li>
+<li>了解对象的生命周期。</li>
+</ul>
+<p>（二）封装</p>
+<ol>
+<li>访问修饰符： public 、 private 、 protected  和默认访问级别。</li>
+</ol>
+<ul>
+<li>掌握不同访问修饰符的作用范围。</li>
+<li>学会使用访问修饰符实现封装。</li>
+</ul>
+<ol start="2">
+<li>getter 和 setter 方法：用于获取和设置对象的属性值。</li>
+</ol>
+<ul>
+<li>理解 getter 和 setter 方法的作用。</li>
+<li>学会编写 getter 和 setter 方法。</li>
+</ul>
+<p>（三）继承</p>
+<ol>
+<li>继承的概念：子类继承父类的属性和方法。</li>
+</ol>
+<ul>
+<li>掌握继承的语法和实现方式。</li>
+<li>理解继承的优点和缺点。</li>
+</ul>
+<ol start="2">
+<li>方法重写：子类可以重写父类的方法。</li>
+</ol>
+<ul>
+<li>学会如何重写父类的方法。</li>
+<li>理解方法重写的规则和注意事项。</li>
+</ul>
+<p>（四）多态</p>
+<ol>
+<li>多态的概念：同一操作作用于不同的对象可以有不同的表现形式。</li>
+</ol>
+<ul>
+<li>理解多态的实现机制。</li>
+<li>掌握多态的优点和应用场景。</li>
+</ul>
+<ol start="2">
+<li>向上转型和向下转型：</li>
+</ol>
+<ul>
+<li>向上转型：将子类对象赋值给父类引用。</li>
+<li>向下转型：将父类引用强制转换为子类引用。</li>
+<li>了解向上转型和向下转型的注意事项。</li>
+</ul>
+<p>三、异常处理</p>
+<p>（一）异常的概念</p>
+<ol>
+<li>异常的定义：程序在运行过程中出现的错误情况。</li>
+</ol>
+<ul>
+<li>理解异常的分类，如运行时异常和检查异常。</li>
+<li>掌握异常的产生原因和处理方法。</li>
+</ul>
+<p>（二）异常处理机制</p>
+<ol>
+<li>try-catch  语句：用于捕获和处理异常。</li>
+</ol>
+<ul>
+<li>学会使用  try-catch  语句捕获异常。</li>
+<li>理解不同类型的异常应该如何处理。</li>
+</ul>
+<ol start="2">
+<li>finally  块：无论是否发生异常，都会执行的代码块。</li>
+</ol>
+<ul>
+<li>掌握  finally  块的作用和使用场景。</li>
+</ul>
+<ol start="3">
+<li>throws  关键字：用于声明方法可能抛出的异常。</li>
+</ol>
+<ul>
+<li>学会在方法声明中使用  throws  关键字。</li>
+<li>理解异常的传播机制。</li>
+</ul>
+<p>四、集合框架</p>
+<p>（一）集合的概念</p>
+<ol>
+<li>集合的定义：一组相同类型的元素的容器。</li>
+</ol>
+<ul>
+<li>理解集合的特点和优势。</li>
+<li>掌握集合框架的体系结构。</li>
+</ul>
+<p>（二）常用集合类</p>
+<ol>
+<li>List  接口：有序、可重复的集合。</li>
+</ol>
+<ul>
+<li>ArrayList ：基于数组实现的动态数组。</li>
+<li>LinkedList ：基于链表实现的双向链表。</li>
+<li>掌握  List  接口的常用方法和两种实现类的特点。</li>
+</ul>
+<ol start="2">
+<li>Set  接口：无序、不可重复的集合。</li>
+</ol>
+<ul>
+<li>HashSet ：基于哈希表实现的集合。</li>
+<li>TreeSet ：基于红黑树实现的有序集合。</li>
+<li>理解  Set  接口的特点和两种实现类的用途。</li>
+</ul>
+<ol start="3">
+<li>Map  接口：存储键值对的集合。</li>
+</ol>
+<ul>
+<li>HashMap ：基于哈希表实现的键值对集合。</li>
+<li>TreeMap ：基于红黑树实现的有序键值对集合。</li>
+<li>掌握  Map  接口的常用方法和两种实现类的使用场景。</li>
+</ul>
+<p>五、输入输出流</p>
+<p>（一）输入流和输出流的概念</p>
+<ol>
+<li>输入流：用于从数据源读取数据。</li>
+</ol>
+<ul>
+<li>理解输入流的抽象类和具体实现类。</li>
+<li>掌握输入流的读取方法。</li>
+</ul>
+<ol start="2">
+<li>输出流：用于向数据目的地写入数据。</li>
+</ol>
+<ul>
+<li>理解输出流的抽象类和具体实现类。</li>
+<li>掌握输出流的写入方法。</li>
+</ul>
+<p>（二）文件输入输出流</p>
+<ol>
+<li>FileInputStream  和  FileOutputStream ：用于读写文件。</li>
+</ol>
+<ul>
+<li>学会使用文件输入输出流进行文件读写操作。</li>
+<li>理解文件读写的流程和注意事项。</li>
+</ul>
+<ol start="2">
+<li>BufferedInputStream  和  BufferedOutputStream ：缓冲输入输出流。</li>
+</ol>
+<ul>
+<li>掌握缓冲输入输出流的作用和使用方法。</li>
+<li>了解如何提高文件读写的效率。</li>
+</ul>
+<p>六、多线程编程</p>
+<p>（一）线程的概念</p>
+<ol>
+<li>线程的定义：程序执行的最小单位。</li>
+</ol>
+<ul>
+<li>理解线程的生命周期和状态转换。</li>
+<li>掌握线程的创建方法。</li>
+</ul>
+<p>（二）线程同步</p>
+<ol>
+<li>线程安全问题：多个线程同时访问共享资源时可能出现的问题。</li>
+</ol>
+<ul>
+<li>理解线程安全问题的产生原因。</li>
+<li>掌握解决线程安全问题的方法。</li>
+</ul>
+<ol start="2">
+<li>同步方法和同步代码块：使用  synchronized  关键字实现线程同步。</li>
+</ol>
+<ul>
+<li>学会使用同步方法和同步代码块。</li>
+<li>理解同步的原理和注意事项。</li>
+</ul>
+<p>（三）线程通信</p>
+<ol>
+<li>等待&#x2F;通知机制：使用  wait() 、 notify()  和  notifyAll()  方法实现线程间的通信。</li>
+</ol>
+<ul>
+<li>掌握等待&#x2F;通知机制的使用方法。</li>
+<li>理解线程通信的原理和注意事项。</li>
+</ul>
+<p>七、总结</p>
+<p>学习 JavaSE 让我对编程有了更深入的理解和认识。通过掌握这些知识点，我能够使用 Java 语言进行基本的编程开发，并为进一步学习 JavaEE 和其他编程语言打下坚实的基础。在未来的学习和工作中，我将继续深入学习和实践，不断提高自己的编程水平。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">lili</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/11/01/javase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">http://example.com/2024/11/01/javase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">lili的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/javase/">javase</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2024/10/15/%E5%88%B6%E4%BD%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="制作个人博客"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">制作个人博客</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">lili</div><div class="author-info-description">此处记录我的学习历程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/01/javase%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="javase学习笔记知识点总结">javase学习笔记知识点总结</a><time datetime="2024-11-01T09:20:36.000Z" title="发表于 2024-11-01 09:20:36">2024-11-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/15/%E5%88%B6%E4%BD%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="制作个人博客">制作个人博客</a><time datetime="2024-10-14T20:55:23.000Z" title="发表于 2024-10-14 20:55:23">2024-10-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/14/%E7%AC%AC%E4%BA%8C%E6%AC%A1Java%E5%AD%A6%E4%B9%A0/" title="第二次Java学习">第二次Java学习</a><time datetime="2024-10-14T14:12:50.000Z" title="发表于 2024-10-14 14:12:50">2024-10-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/11/%E7%AC%AC%E4%B8%80%E6%AC%A1Java%E5%AD%A6%E4%B9%A0/" title="第一次Java学习">第一次Java学习</a><time datetime="2024-10-11T00:00:00.000Z" title="发表于 2024-10-11 00:00:00">2024-10-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By lili</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
